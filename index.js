@@ -1,4 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
+require('dotenv').config();
+
 const { BOT_TOKEN } = process.env;
 
 if (!BOT_TOKEN) {
@@ -10,6 +12,9 @@ const bot = new TelegramBot(BOT_TOKEN, { polling: true }); // will change to { w
 
 bot.on('message', (msg) => {
   bot.sendMessage(
-    msg.split(' ').map((word) => word.split('').reverse().join('')).join(" ")
+    msg
+      .split(' ')
+      .map((word) => word.split('').reverse().join(''))
+      .join(' ')
   );
 });
