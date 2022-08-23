@@ -1,38 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
-
 const Uwuifier = require('uwuifier');
-const uwuifier1 = new Uwuifier.default({
-  spaces: { faces: 0.15, actions: 0, stutters: 0.15 },
-  words: 1,
-  exclamations: 0.8,
-});
-
-// console.log(uwuifier1.actions);
-// uwuifier1.actions = ['*blushes*'];
-// console.log(uwuifier1.actions);
-
-const uwuifier2 = new Uwuifier.default({
-  spaces: { faces: 0.2, actions: 0.15, stutters: 0.25 },
-  words: 1,
-  exclamations: 0.9,
-});
-const uwuifier3 = new Uwuifier.default({
-  spaces: { faces: 0.3, actions: 0.3, stutters: 0.3 },
-  words: 1,
-  exclamations: 1,
-});
-
-const uwuifiers = [uwuifier1, uwuifier2, uwuifier3];
-
-/*
-DEFAULTS = {
-    spaces: { faces: 0.05, actions: 0.075, stutters: 0.1 },
-    words: 1,
-    exclamations: 1,
-}
-*/
 
 const { TOKEN, SERVER_URL } = process.env;
 if (!TOKEN) {
@@ -43,6 +12,27 @@ if (!SERVER_URL) {
   console.error('Server URL required. Exiting...');
   process.exit(1);
 }
+
+const uwuifier1 = new Uwuifier.default({
+  spaces: { faces: 0.15, actions: 0, stutters: 0.15 },
+  words: 1,
+  exclamations: 0.8,
+});
+const uwuifier2 = new Uwuifier.default({
+  spaces: { faces: 0.2, actions: 0.15, stutters: 0.25 },
+  words: 1,
+  exclamations: 0.9,
+});
+const uwuifier3 = new Uwuifier.default({
+  spaces: { faces: 0.3, actions: 0.3, stutters: 0.3 },
+  words: 1,
+  exclamations: 1,
+});
+const uwuifiers = [uwuifier1, uwuifier2, uwuifier3];
+
+// console.log(uwuifier1.actions);
+// uwuifier1.actions = ['*blushes*'];
+// console.log(uwuifier1.actions);
 
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`;
 const URI = `/webhook/${TOKEN}`;
@@ -126,16 +116,6 @@ app.post(URI, async (req, res) => {
   if (update.inline_query) {
     const { id: inline_query_id, query } = update.inline_query;
 
-    // const uwuified = uwuifier.uwuifySentence(query);
-    // const uwuText =
-    // query.length >= 252 ? uwuified + ' *runs away*' : uwuified || 'UwU';
-    // const description =
-    // uwuText.length > 90 ? uwuText.slice(0, 90) + '...' : uwuText;
-
-    // const input_message_content = {
-    //   message_text: uwuText,
-    // };
-
     const translations = uwuifiers.map((uwuifier) =>
       uwuifier.uwuifySentence(query)
     );
@@ -148,8 +128,8 @@ app.post(URI, async (req, res) => {
         : translation || 'UwU'
     );
 
-    const titles = ['Send UwU', 'Send UwU Rawr', 'Send UwU Rawr XD'];
-    const results = uwuifiers.map((u, i) => ({
+    const titles = ['Send UwU', 'Send OwO', 'Send >w<'];
+    const results = [...Array(uwuifiers.length)].map((_, i) => ({
       type: 'article',
       id: i,
       title: titles[i],
@@ -157,18 +137,10 @@ app.post(URI, async (req, res) => {
         message_text: texts[i],
       },
       description: descriptions[i],
-      thumb_url: `${SERVER_URL}/images/thumbnail-000${i + 1}.jpeg`,
+      thumb_url: `${SERVER_URL}/images/thumbnail-00${i + 1}.jpeg`,
       thumb_width: 10,
       thumb_height: 10,
     }));
-
-    // const inlineQueryResult = {
-    //   type: 'article',
-    //   id: String(Math.floor(Math.random() * 16)),
-    //   title: 'Send UwU',
-    //   input_message_content,
-    //   description,
-    // };
 
     answerInlineQuery(results, inline_query_id);
   }
