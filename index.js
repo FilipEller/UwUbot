@@ -19,16 +19,51 @@ const uwuifier1 = new Uwuifier.default({
   exclamations: 0.8,
 });
 const uwuifier2 = new Uwuifier.default({
-  spaces: { faces: 0.2, actions: 0.15, stutters: 0.25 },
+  spaces: { faces: 0.23, actions: 0.15, stutters: 0.22 },
   words: 1,
   exclamations: 0.9,
 });
 const uwuifier3 = new Uwuifier.default({
-  spaces: { faces: 0.3, actions: 0.3, stutters: 0.3 },
+  spaces: { faces: 0.35, actions: 0.3, stutters: 0.25 },
   words: 1,
   exclamations: 1,
 });
+const actions = [
+  '*blushes*',
+  '*whispers to self*',
+  '*cries*',
+  '*screams*',
+  '*sweats*',
+  '*twerks*',
+  '*screeches*',
+  '*sees bulge*',
+  '*looks at you*',
+  '*notices buldge*',
+  '*starts twerking*',
+  '*huggles tightly*',
+  '*boops your nose*',
+  '*bites lip*',
+  '*looks away*',
+  '*sheds a tear*',
+  '*meows*',
+  '*hesitates*',
+  '*plays with hair*',
+  '*sits down*',
+  '*caresses your cheek*',
+  '*stands up*',
+  '*lies down*',
+  '*looks down*',
+  '*bows*',
+  '*woofs*',
+  '*rawrs*',
+  '*peels a banana*',
+  '*sighs*',
+  '*whimpers*',
+];
+// const removed = ['*runs away*', '*walks away*'];
+
 const uwuifiers = [uwuifier1, uwuifier2, uwuifier3];
+uwuifiers.forEach((obj) => (obj.actions = actions));
 
 // console.log(uwuifier1.actions);
 // uwuifier1.actions = ['*blushes*'];
