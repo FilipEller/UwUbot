@@ -3,6 +3,10 @@
 This is a Telegram bot for translating messages to UwU language.
 Start using by contacting https://t.me/UwUrawrbot.
 
+## Deployed to Heroku
+
+https://desolate-everglades-20389.herokuapp.com/
+
 ## Image sources
 
 https://emoji.gg/emoji/3391-uwu
