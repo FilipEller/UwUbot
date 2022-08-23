@@ -64,7 +64,7 @@ const actions = [
 // const removed = ['*runs away*', '*walks away*'];
 
 const uwuifiers = [uwuifier1, uwuifier2, uwuifier3];
-uwuifiers.forEach((obj) => (obj.actions = actions));
+uwuifiers.forEach(obj => (obj.actions = actions));
 
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`;
 const URI = `/webhook/${TOKEN}`;
@@ -154,13 +154,13 @@ app.post(URI, async (req, res) => {
   if (update.inline_query) {
     const { id: inline_query_id, query } = update.inline_query;
 
-    const translations = uwuifiers.map((uwuifier) =>
+    const translations = uwuifiers.map(uwuifier =>
       uwuifier.uwuifySentence(query)
     );
-    const texts = translations.map((translation) =>
+    const texts = translations.map(translation =>
       query.length >= 252 ? translation + ' *runs away*' : translation || 'UwU'
     );
-    const descriptions = translations.map((translation) =>
+    const descriptions = translations.map(translation =>
       translation.length > 85 ? translation.slice(0, 85) + '...' : translation
     );
     const placeholders = ['UwU', 'OwO', '>w<'];
