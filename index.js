@@ -14,20 +14,22 @@ if (!SERVER_URL) {
 }
 
 const uwuifier1 = new Uwuifier.default({
-  spaces: { faces: 0.15, actions: 0, stutters: 0.15 },
-  words: 1,
-  exclamations: 0.8,
+  spaces: { faces: 0.11, actions: 0, stutters: 0.12 },
 });
 const uwuifier2 = new Uwuifier.default({
-  spaces: { faces: 0.23, actions: 0.15, stutters: 0.22 },
-  words: 1,
-  exclamations: 0.9,
+  spaces: { faces: 0.11, actions: 0.1, stutters: 0.12 },
 });
 const uwuifier3 = new Uwuifier.default({
-  spaces: { faces: 0.35, actions: 0.3, stutters: 0.25 },
-  words: 1,
-  exclamations: 1,
+  spaces: { faces: 0.2, actions: 0.17, stutters: 0.25 },
 });
+/*
+const DEFAULTS = {
+  SPACES: { faces: 0.05, actions: 0.075, stutters: 0.1 },
+  WORDS: 1,
+  EXCLAMATIONS: 1,
+};
+*/
+
 const actions = [
   '*blushes*',
   '*whispers to self*',
@@ -49,7 +51,6 @@ const actions = [
   '*hesitates*',
   '*plays with hair*',
   '*sits down*',
-  '*caresses your cheek*',
   '*stands up*',
   '*lies down*',
   '*looks down*',
@@ -123,23 +124,29 @@ app.post(URI, async (req, res) => {
     const { id, type } = chat;
 
     let msg;
+    const info =
+      'This bot can help translate your messages to UwU language. ' +
+      'It works automatically, no need to add it anywhere. ' +
+      'Simply open any of your chats and type @UwUrawrbot + something in the message field. ' +
+      'Then tap on a result to send.\n\n' +
+      'For example, try typing \n' +
+      '@UwUrawrbot hello\n' +
+      'in this chat.\n\n' +
+      'Inline queries have a maximum length of 256 characters. ' +
+      'If you want to translate longer messages, just send the message here, ' +
+      'and the bot will reply with the translated version.';
 
     if (text && type === 'private') {
       if (
         text.toLowerCase().includes('/start') ||
         text.toLowerCase().includes('/help')
       ) {
-        msg =
-          'This bot can help translate your messages to UwU language. ' +
-          'It works automatically, no need to add it anywhere. ' +
-          'Simply open any of your chats and type @UwUrawrbot + something in the message field. ' +
-          'Then tap on a result to send.\n\n' +
-          'For example, try typing \n' +
-          '@UwUrawrbot hello\n' +
-          'in this chat.\n\n' +
-          'Inline queries have a maximum length of 256 characters. ' +
-          'If you want to translate longer messages, just send the message here, ' +
-          'and the bot will reply with the translated version.';
+        msg = info;
+      } else if (
+        text.toLowerCase().includes('/stawt') ||
+        text.toLowerCase().includes('/hewp')
+      ) {
+        msg = uwuifier2.uwuifySentence(info);
       } else {
         msg = uwuifier2.uwuifySentence(text);
       }
@@ -158,10 +165,9 @@ app.post(URI, async (req, res) => {
       query.length >= 252 ? translation + ' *runs away*' : translation || 'UwU'
     );
     const descriptions = translations.map((translation) =>
-      translation.length > 85
-        ? translation.slice(0, 85) + '...'
-        : translation || 'UwU'
+      translation.length > 85 ? translation.slice(0, 85) + '...' : translation
     );
+    const placeholders = ['UwU', 'OwO', '>w<'];
 
     const titles = ['Send UwU', 'Send OwO', 'Send >w<'];
     const results = [...Array(uwuifiers.length)].map((_, i) => ({
@@ -171,7 +177,7 @@ app.post(URI, async (req, res) => {
       input_message_content: {
         message_text: texts[i],
       },
-      description: descriptions[i],
+      description: descriptions[i] || placeholders[i],
       thumb_url: `${SERVER_URL}/images/thumbnail-00${i + 1}.jpeg`,
       thumb_width: 10,
       thumb_height: 10,
