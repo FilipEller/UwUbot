@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run webhook:set && node index.js",
+    "start": "node index.js",
+    "start:full": "npm run webhook:set && node index.js",
     "dev": "nodemon index.js",
+    "dev:full": "npm run webhook:set && nodemon index.js",
     "webhook:set": "node setWebhook.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
