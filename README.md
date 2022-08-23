@@ -3,9 +3,21 @@
 This is a Telegram bot for translating messages to UwU language.
 Start using by contacting https://t.me/UwUrawrbot.
 
+## Getting started
+
+1. Set environment variables TOKEN and SERVER_URL in .env file.
+   TOKEN is the Telegram bot HTTP API token given by https://t.me/BotFather
+   and SERVER_URL is the URL
+2. Run npm install
+3. Run npm run webhook:set
+4. For production, run npm start
+   For development, npm run dev
+
 ## Deployed to Heroku
 
-https://desolate-everglades-20389.herokuapp.com/
+Name: desolate-everglades-20389
+URL: https://desolate-everglades-20389.herokuapp.com/
+Git URL: https://git.heroku.com/desolate-everglades-20389.git
 
 ## Image sources
 
