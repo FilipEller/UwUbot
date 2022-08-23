@@ -66,10 +66,6 @@ const actions = [
 const uwuifiers = [uwuifier1, uwuifier2, uwuifier3];
 uwuifiers.forEach((obj) => (obj.actions = actions));
 
-// console.log(uwuifier1.actions);
-// uwuifier1.actions = ['*blushes*'];
-// console.log(uwuifier1.actions);
-
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`;
 const URI = `/webhook/${TOKEN}`;
 
