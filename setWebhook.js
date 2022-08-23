@@ -6,7 +6,6 @@ if (!TOKEN) {
   console.error('Telegram bot token required. Exiting...');
   process.exit(1);
 }
-
 if (!SERVER_URL) {
   console.error('Server URL required. Exiting...');
   process.exit(1);
