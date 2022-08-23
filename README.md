@@ -1,7 +1,7 @@
-# UwUfybot
+# UwUrawrbot
 
 This is a Telegram bot for translating messages to UwU language.
-Start using by contacting https://t.me/UwUfybot.
+Start using by contacting https://t.me/UwUrawrbot.
 
 ## Dependencies
 
