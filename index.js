@@ -107,6 +107,12 @@ const answerInlineQuery = async (results, inline_query_id) => {
   }
 };
 
+app.get('/', (req, res) => {
+  res.send(
+    'This server is running a Telegram bot. Start using it here: https://t.me/UwUrawrbot.'
+  );
+});
+
 app.get('/ping', (req, res) => {
   res.send('pong');
 });
@@ -182,6 +188,10 @@ app.post(URI, async (req, res) => {
     answerInlineQuery(results, inline_query_id);
   }
   res.send();
+});
+
+app.use((req, res) => {
+  response.status(404).send({ error: 'unknown endpoint' });
 });
 
 app.listen(process.env.PORT || 5000, async () => {
