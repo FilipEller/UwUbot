@@ -191,7 +191,7 @@ app.post(URI, async (req, res) => {
 });
 
 app.use((req, res) => {
-  response.status(404).send({ error: 'unknown endpoint' });
+  res.status(404).send({ error: 'unknown endpoint' });
 });
 
 app.listen(process.env.PORT || 5000, async () => {
