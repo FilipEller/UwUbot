@@ -126,7 +126,7 @@ app.post(URI, async (req, res) => {
     const { id, type } = chat;
 
     let msg;
-    const info =
+    const startInfo =
       'This bot can help translate your messages to UwU language. ' +
       'It works automatically, no need to add it anywhere. ' +
       'Simply open any of your chats and type @UwUrawrbot + something in the message field. ' +
@@ -137,18 +137,24 @@ app.post(URI, async (req, res) => {
       'Inline queries have a maximum length of 256 characters. ' +
       'If you want to translate longer messages, just send the message here, ' +
       'and the bot will reply with the translated version.';
+    const aboutInfo =
+      'This bot is developed by @FilipEller. ' +
+      'It uses https://www.npmjs.com/package/uwuifier by Schotsl for translations. ' +
+      'The bot does not store your messages or use them for anything other than translation.';
 
     if (text && type === 'private') {
       if (
         text.toLowerCase().includes('/start') ||
         text.toLowerCase().includes('/help')
       ) {
-        msg = info;
+        msg = startInfo;
       } else if (
         text.toLowerCase().includes('/stawt') ||
         text.toLowerCase().includes('/hewp')
       ) {
-        msg = uwuifier2.uwuifySentence(info);
+        msg = uwuifier2.uwuifySentence(startInfo);
+      } else if (text.toLowerCase().includes('/about')) {
+        msg = aboutInfo;
       } else {
         msg = uwuifier2.uwuifySentence(text);
       }
