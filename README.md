@@ -15,9 +15,9 @@ Start using by contacting https://t.me/UwUrawrbot.
 
 ## Deployed to Heroku
 
-Name: desolate-everglades-20389
-URL: https://desolate-everglades-20389.herokuapp.com/
-Git URL: https://git.heroku.com/desolate-everglades-20389.git
+Name: sheltered-fortress-78436
+URL: https://sheltered-fortress-78436.herokuapp.com
+Git URL: https://git.heroku.com/sheltered-fortress-78436.git
 
 ## Image sources
 
