@@ -2,27 +2,36 @@
 ! Not hosted currently
 
 This is a Telegram bot for translating messages to UwU language.
-Start using by contacting https://t.me/UwUrawrbot.
+Contact [@UwUrawrbot](https://t.me/UwUrawrbot) to start using.
 
 ## Getting started
 
-1. Set environment variables TOKEN and SERVER_URL in .env file.
-   TOKEN is the Telegram bot HTTP API token given by https://t.me/BotFather
-   and SERVER_URL is the URL
-2. Run npm install
-3. Run npm run webhook:set
-4. For production, run npm start
-   For development, npm run dev
+### Prerequisites
 
-## Deployed to Heroku
+1. Talk to Telegram's [BotFather](https://t.me/BotFather) to acquire a HTTP API token
+1. Store the token in the file `.env` in the project root as TOKEN
+1. For running on localhost, set up [ngrok](https://ngrok.com/docs/getting-started)
+1. Fro running on a web host, store the server's web address in the same file as SERVER_URL
+   
+### Running the app
 
-Name: sheltered-fortress-78436
-URL: https://sheltered-fortress-78436.herokuapp.com
-Git URL: https://git.heroku.com/sheltered-fortress-78436.git
+On a web host:
+1. Start a terminal in the project root
+1. `npm install`
+1. `npm run webhook:set`
+1. `run npm start`
+
+For development on localhost:
+1. Start a terminal in the project root
+1. `ngrok http 5000`
+1. Store the ngrok server's address in the file `.env` file as SERVER_URL
+1. `npm install`
+1. `npm run webhook:set`
+1. `npm run dev`
 
 ## Image sources
 
-https://emoji.gg/emoji/3391-uwu
-https://coolors.co/ffadad-ffd6a5-fdffb6-caffbf-9bf6ff-a0c4ff-bdb2ff-ffc6ff-fffffc
-https://mdigi.tools/solid-color-image-generator/ size 100x100
-https://pixelied.com/ font Amiko, fontsize 30
+https://emoji.gg/emoji/3391-uwu  
+https://coolors.co/ffadad-ffd6a5-fdffb6-caffbf-9bf6ff-a0c4ff-bdb2ff-ffc6ff-fffffc  
+https://mdigi.tools/solid-color-image-generator/ size 100x100  
+https://pixelied.com/ font Amiko, fontsize 30  
