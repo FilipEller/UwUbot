@@ -177,7 +177,7 @@ app.post(URI, async (req, res) => {
     );
     const placeholders = ['UwU', 'OwO', '>w<'];
 
-    const titles = ['Send UwU', 'Send OwO', 'Send >w<'];
+    const titles = ['Send message UwU', 'Send message OwO', 'Send message >w<'];
     const results = [...Array(uwuifiers.length)].map((_, i) => ({
       type: 'article',
       id: i,
