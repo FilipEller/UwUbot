@@ -140,7 +140,8 @@ app.post(URI, async (req, res) => {
     const aboutInfo =
       'This bot is developed by @FilipEller. ' +
       'It uses https://www.npmjs.com/package/uwuifier by Schotsl for translations. ' +
-      'The bot does not store your messages or use them for anything other than translation.';
+      'The bot does not store your messages or use them for anything other than translation.\n\n' +
+      'View source code at https://github.com/FilipEller/UwUbot.';
 
     if (text && type === 'private') {
       if (
