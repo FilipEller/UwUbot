@@ -2,7 +2,8 @@
 
 This is a Telegram bot for translating messages to UwU language.
 Contact [@UwUrawrbot](https://t.me/UwUrawrbot) to start using.
-The bot is hosted on Azure.
+The bot is hosted on a free Azure tier,
+so it might take some time for it to start after idling.
 
 ## Getting started
 
